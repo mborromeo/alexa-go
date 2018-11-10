@@ -120,17 +120,19 @@ type Slot struct {
 	Resolutions  Resolutions `json:"resolutions"`
 }
 
+type ResolutionPerAuthorityItem struct {
+	Authority	string	`json:"authority"`
+	Status	struct {
+		Code	string	`json:"code"`
+	} `json:"status"`
+	Values []struct{
+		Value struct{
+			Name string `json:"name"`
+			Id   string `json:"id"`
+		} `json:"value"`
+	} `json:"values"`
+}
+
 type Resolutions struct {
-	ResolutionPerAuthority []struct{
-		Authority	string	`json:"authority"`
-		Status	struct {
-			Code	string	`json:"code"`
-		} `json:"status"`
-		Values []struct{
-			Value struct{
-				Name string `json:"name"`
-				Id   string `json:"id"`
-			} `json:"value"`
-		} `json:"values"`
-	} `json:"resolutionsPerAuthority"`
+	ResolutionPerAuthority []ResolutionPerAuthorityItem `json:"resolutionsPerAuthority"`
 }
